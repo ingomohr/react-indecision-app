@@ -16,6 +16,16 @@ This will automatically update your running app live in the browser when you edi
 ```
 live-server public
 ```
+#### Regenerating node_modules folder
+* Delete the folder
+* In terminal run
+```
+yarn install
+```
+
+
+
+
 
 
 
