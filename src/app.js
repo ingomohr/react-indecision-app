@@ -2,14 +2,43 @@ console.log('App.js is up and running.');
 
 var app = {
     title: 'Indecision App',
-    subtitle: "Don't just sit there, do something!"
+    subtitle: "Don't just sit there, do something!",
+    options: ["One", "Two"]
 };
+
+function getOptionsInfo() {
+    var hasOptions = app.options && app.options.length > 0;
+
+    if (hasOptions) {
+        return app.options.length + " options found";
+    } else {
+        return "no options found";
+    }
+}
 
 // JSX - Javascript XML
 var template = (
     <div>
         <h1>{app.title}</h1>
-        <p>{app.subtitle}</p>
+
+        {
+            /*
+             * If app.subtitle exists, display it
+             * as h1.
+             * Otherwise, don't display it.
+             */
+        }
+        {app.subtitle && <p>{app.subtitle}</p>}
+
+        {
+            /*
+             * If there are options, display their
+             * number.
+             * Otherwise, display there are no options.
+             */
+        }
+        <p>{getOptionsInfo()}</p>
+
         <ol>
             <li>Item 1</li>
             <li>Item 2</li>
