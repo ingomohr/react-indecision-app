@@ -1,34 +1,13 @@
 "use strict";
 
-var nameVar = "John";
-// Now, this is weird sh*t
-var nameVar = "Jackie";
-// => prints "Jackie"
-console.log("nameVar:", nameVar);
+// es5
+var square5 = function square5(x) {
+    return x * x;
+};
+console.log("SquareEs5", square5(2));
 
-var nameLet = "John";
-nameLet = "John Doe";
-// not possible:
-// let nameLet = "Berta";
-console.log("nameLet:", nameLet);
-
-var nameConst = "ConstName";
-// not possible:
-// nameConst = "foo";
-console.log("nameConst:", nameConst);
-
-// Scoping:
-// =========================
-// var is function-scoped
-var petName = "Moe";
-if (petName) {
-    var notSoHiddenName = "Hidden";
-}
-// actually possible #whattha:
-console.log("pet name: ", notSoHiddenName);
-
-// let, const are block-scoped
-
-
-// use let and const.
-// forget var
+// es6 (we do love 'em lambdas)
+var square6 = function square6(x) {
+    return x * x;
+};
+console.log("SquareEs6", square6(3));
