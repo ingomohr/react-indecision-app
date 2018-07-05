@@ -1,21 +1,20 @@
-"use strict";
-
 var nameVar = "John";
 // Now, this is weird sh*t
 var nameVar = "Jackie";
 // => prints "Jackie"
 console.log("nameVar:", nameVar);
 
-var nameLet = "John";
+let nameLet = "John";
 nameLet = "John Doe";
 // not possible:
 // let nameLet = "Berta";
 console.log("nameLet:", nameLet);
 
-var nameConst = "ConstName";
+const nameConst = "ConstName";
 // not possible:
 // nameConst = "foo";
 console.log("nameConst:", nameConst);
+
 
 // Scoping:
 // =========================
