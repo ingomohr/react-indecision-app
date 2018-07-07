@@ -1,13 +1,34 @@
 "use strict";
 
-// es5
-var square5 = function square5(x) {
-    return x * x;
-};
-console.log("SquareEs5", square5(2));
+var user = {
+    name: "John",
+    cities: ["NY", "Rio", "Tokyo"],
 
-// es6 (we do love 'em lambdas)
-var square6 = function square6(x) {
-    return x * x;
+    // Arrow-function would not allow
+    // access to 'this'
+    // i.e. printCities = () => {...}
+    // es5 function would do, though
+    // but we use this es6 thingie:
+    printCities: function printCities() {
+        var _this = this;
+
+        this.cities.forEach(function (city) {
+            console.log(_this.name + " lived in " + city);
+        });
+    },
+
+
+    // now some map() fun:
+    printCities2: function printCities2() {
+        var _this2 = this;
+
+        this.cities.map(function (city) {
+            return _this2.name + " also lived in " + city;
+        }).forEach(function (msg) {
+            return console.log(msg);
+        });
+    }
 };
-console.log("SquareEs6", square6(3));
+
+console.log(user.printCities());
+console.log(user.printCities2());
