@@ -69,16 +69,18 @@ var render = function render() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item 1'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item 2'
-            )
+            app.options.map(function (option) {
+                // Bad key
+                // Keys must be unique within the
+                // array.
+                // They're used by React for
+                // redraw-calculation.
+                return React.createElement(
+                    'li',
+                    { key: option },
+                    option
+                );
+            })
         ),
         React.createElement(
             'form',

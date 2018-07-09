@@ -65,8 +65,16 @@ const render = () => {
             }
             <p>{getOptionsInfo()}</p>
             <ol>
-                <li>Item 1</li>
-                <li>Item 2</li>
+                {
+                    app.options.map((option) => {
+                        // Bad key
+                        // Keys must be unique within the
+                        // array.
+                        // They're used by React for
+                        // redraw-calculation.
+                        return <li key={option}>{option}</li>
+                    })
+                }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"></input>
