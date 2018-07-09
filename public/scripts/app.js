@@ -5,52 +5,100 @@ console.log('App.js is up and running.');
 var app = {
     title: 'Indecision App',
     subtitle: "Don't just sit there, do something!",
-    options: ["One", "Two"]
+    options: []
 };
 
 function getOptionsInfo() {
     var hasOptions = app.options && app.options.length > 0;
 
     if (hasOptions) {
-        return app.options.length + " options found";
+        return "You have " + app.options.length + " options";
     } else {
-        return "no options found";
+        return React.createElement(
+            'i',
+            null,
+            'Add some options'
+        );
     }
 }
 
-// JSX - Javascript XML
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        getOptionsInfo()
-    ),
-    React.createElement(
-        'ol',
+var onFormSubmit = function onFormSubmit(e) {
+    // Default behavior would add the input text to the URL
+    // in the address bar. We don't want that.
+    e.preventDefault();
+
+    // e.target is the form.
+    // We access the input field w/ id "option"
+    // And on that input field, we access the value
+    // the user typed in.
+    var newOption = e.target.elements.option.value;
+    if (newOption) {
+        app.options.push(newOption);
+        e.target.elements.option.value = "";
+    }
+    render();
+};
+
+var onRemoveAll = function onRemoveAll() {
+    // app.options.length = 0;
+    // ... would work, as well.
+    app.options = [];
+    render();
+};
+
+var render = function render() {
+    // JSX - Javascript XML
+    var template = React.createElement(
+        'div',
         null,
         React.createElement(
-            'li',
+            'h1',
             null,
-            'Item 1'
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
         ),
         React.createElement(
-            'li',
+            'p',
             null,
-            'Item 2'
+            getOptionsInfo()
+        ),
+        React.createElement(
+            'ol',
+            null,
+            React.createElement(
+                'li',
+                null,
+                'Item 1'
+            ),
+            React.createElement(
+                'li',
+                null,
+                'Item 2'
+            )
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        ),
+        React.createElement(
+            'button',
+            { onClick: onRemoveAll },
+            'Remove All'
         )
-    )
-);
+    );
 
-var appRoot = document.getElementById('app');
+    var appRoot = document.getElementById('app');
+    ReactDOM.render(template, appRoot);
+};
+
+render();
