@@ -50,30 +50,35 @@ let count = 0;
 const someId = "someId";
 
 const addOne = () => {
-    console.log("Adding one");
+    count++;
+    renderCounterApp();
 }
 
 const minusOne = () => {
-    console.log("Removing one");
+    count--;
+    renderCounterApp();
 }
 
 const reset = () => {
-    console.log("Resetting");
+    count = 0;
+    renderCounterApp();
 }
-
-const templateTwo = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne} className="button">+1</button>
-        <button onClick={minusOne} className="button">-1</button>
-        <button onClick={reset} className="button">Reset</button>
-    </div>
-);
-
-console.log(templateTwo);
 
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+const renderCounterApp = () => {
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne} className="button">+1</button>
+            <button onClick={minusOne} className="button">-1</button>
+            <button onClick={reset} className="button">Reset</button>
+        </div>
+    );
+    ReactDOM.render(templateTwo, appRoot);
+
+}
+
+renderCounterApp();
 
 
