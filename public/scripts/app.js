@@ -1,34 +1,101 @@
-"use strict";
+'use strict';
 
-var user = {
-    name: "John",
-    cities: ["NY", "Rio", "Tokyo"],
+console.log('App.js is up and running.');
 
-    // Arrow-function would not allow
-    // access to 'this'
-    // i.e. printCities = () => {...}
-    // es5 function would do, though
-    // but we use this es6 thingie:
-    printCities: function printCities() {
-        var _this = this;
-
-        this.cities.forEach(function (city) {
-            console.log(_this.name + " lived in " + city);
-        });
-    },
-
-
-    // now some map() fun:
-    printCities2: function printCities2() {
-        var _this2 = this;
-
-        this.cities.map(function (city) {
-            return _this2.name + " also lived in " + city;
-        }).forEach(function (msg) {
-            return console.log(msg);
-        });
-    }
+var app = {
+    title: 'Indecision App',
+    subtitle: "Don't just sit there, do something!",
+    options: ["One", "Two"]
 };
 
-console.log(user.printCities());
-console.log(user.printCities2());
+function getOptionsInfo() {
+    var hasOptions = app.options && app.options.length > 0;
+
+    if (hasOptions) {
+        return app.options.length + " options found";
+    } else {
+        return "no options found";
+    }
+}
+
+// JSX - Javascript XML
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        getOptionsInfo()
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item 1'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item 2'
+        )
+    )
+);
+
+var count = 0;
+var someId = "someId";
+
+var addOne = function addOne() {
+    console.log("Adding one");
+};
+
+var minusOne = function minusOne() {
+    console.log("Removing one");
+};
+
+var reset = function reset() {
+    console.log("Resetting");
+};
+
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        'Count: ',
+        count
+    ),
+    React.createElement(
+        'button',
+        { onClick: addOne, className: 'button' },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne, className: 'button' },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset, className: 'button' },
+        'Reset'
+    )
+);
+
+console.log(templateTwo);
+
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);

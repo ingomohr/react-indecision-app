@@ -46,8 +46,34 @@ var template = (
     </div>
 );
 
-var appRoot = document.getElementById('app');
+let count = 0;
+const someId = "someId";
 
-ReactDOM.render(template, appRoot);
+const addOne = () => {
+    console.log("Adding one");
+}
+
+const minusOne = () => {
+    console.log("Removing one");
+}
+
+const reset = () => {
+    console.log("Resetting");
+}
+
+const templateTwo = (
+    <div>
+        <h1>Count: {count}</h1>
+        <button onClick={addOne} className="button">+1</button>
+        <button onClick={minusOne} className="button">-1</button>
+        <button onClick={reset} className="button">Reset</button>
+    </div>
+);
+
+console.log(templateTwo);
+
+const appRoot = document.getElementById('app');
+
+ReactDOM.render(templateTwo, appRoot);
 
 
