@@ -40,6 +40,11 @@ const onRemoveAll = () => {
     render();
 };
 
+const onMakeDecision = () => {
+    const randIndex = Math.floor(Math.random() * app.options.length);
+    alert("Go with option: " + app.options[randIndex]);
+}
+
 
 const render = () => {
     // JSX - Javascript XML
@@ -64,6 +69,7 @@ const render = () => {
                  */
             }
             <p>{getOptionsInfo()}</p>
+            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should I do?</button>
             <ol>
                 {
                     app.options.map((option) => {

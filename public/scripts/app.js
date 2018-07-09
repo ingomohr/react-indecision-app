@@ -46,6 +46,11 @@ var onRemoveAll = function onRemoveAll() {
     render();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randIndex = Math.floor(Math.random() * app.options.length);
+    alert("Go with option: " + app.options[randIndex]);
+};
+
 var render = function render() {
     // JSX - Javascript XML
     var template = React.createElement(
@@ -65,6 +70,11 @@ var render = function render() {
             'p',
             null,
             getOptionsInfo()
+        ),
+        React.createElement(
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'ol',
