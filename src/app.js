@@ -20,7 +20,7 @@ class IndecisionApp extends React.Component {
 class Header extends React.Component {
 
     /**
-     * render() must be defined by any React Component.
+     * render() must be defined by every React Component.
      */
     render() {
         return (

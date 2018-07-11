@@ -52,7 +52,7 @@ var Header = function (_React$Component2) {
 
 
         /**
-         * render() must be defined by any React Component.
+         * render() must be defined by every React Component.
          */
         value: function render() {
             return React.createElement(
