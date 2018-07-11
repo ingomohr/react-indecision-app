@@ -1,3 +1,16 @@
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOption />
+            </div>
+        );
+    }
+}
+
 class Header extends React.Component {
 
     /**
@@ -28,7 +41,18 @@ class Options extends React.Component {
     render() {
         return (
             <div>
-                <p>Some options</p>
+                <Option />
+                <Option />
+            </div>
+        );
+    }
+}
+
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Some option</p>
             </div>
         );
     }
@@ -38,25 +62,11 @@ class AddOption extends React.Component {
     render() {
         return (
             <div>
-                <input type="text"/>
+                <input type="text" />
                 <button>Add Option</button>
             </div>
         );
     }
 }
 
-const jsx = (
-    <div>
-        {
-            // First letter of component-JSX-elements must
-            // be uppercase. It's how React detects components.
-            // So - <header> would not be rendered.
-        }
-        <Header />
-        <Action />
-        <Options />
-        <AddOption />
-    </div>
-);
-
-ReactDOM.render(jsx, document.getElementById("app"));
+ReactDOM.render(<IndecisionApp />, document.getElementById("app"));
