@@ -4,7 +4,7 @@ class IndecisionApp extends React.Component {
         super(props);
         this.state = {
             title: "Indecision App",
-            subTitle: "Hey, good-lookin'!",
+            subTitle: "Let your app decide",
             options: []
         };
 
@@ -43,7 +43,7 @@ class IndecisionApp extends React.Component {
         if (!newOption) {
             return "Enter a valid option.";
         } else if (this.state.options.indexOf(newOption) != -1) {
-            return "Duplicate option '" + newOption + "'";
+            return "Duplicate option: <" + newOption + ">";
         } else {
             this.setState((prevState) => {
                 return {
@@ -114,7 +114,7 @@ class Options extends React.Component {
         return (
             <div>
                 <button onClick={this.props.handleDeleteOptions}>Remove All</button>
-                <p>You've got {numOptions} options:</p>
+                <p>You have got {numOptions} options:</p>
                 {
                     this.props.options.map((option) =>
                         <Option key={option} optionText={option} />

@@ -18,7 +18,7 @@ var IndecisionApp = function (_React$Component) {
 
         _this.state = {
             title: "Indecision App",
-            subTitle: "Hey, good-lookin'!",
+            subTitle: "Let your app decide",
             options: []
         };
 
@@ -68,7 +68,7 @@ var IndecisionApp = function (_React$Component) {
             if (!newOption) {
                 return "Enter a valid option.";
             } else if (this.state.options.indexOf(newOption) != -1) {
-                return "Duplicate option '" + newOption + "'";
+                return "Duplicate option: <" + newOption + ">";
             } else {
                 this.setState(function (prevState) {
                     return {
@@ -195,7 +195,7 @@ var Options = function (_React$Component4) {
                 React.createElement(
                     "p",
                     null,
-                    "You've got ",
+                    "You have got ",
                     numOptions,
                     " options:"
                 ),
