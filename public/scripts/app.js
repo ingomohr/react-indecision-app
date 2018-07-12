@@ -110,16 +110,25 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
-    function Options() {
+    function Options(props) {
         _classCallCheck(this, Options);
 
-        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+        // We're binding handleRemoveAll to this
+        // because otherwise the method would loose
+        // the this-context.
+        // We alternatively could bind the method in the
+        // onClick implementation, but binding only once
+        // in the constructor is more efficient.
+        var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+        _this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+        return _this4;
     }
 
     _createClass(Options, [{
         key: "handleRemoveAll",
         value: function handleRemoveAll() {
-            alert("Handle remove All");
+            console.log(this.props.options);
         }
     }, {
         key: "render",

@@ -48,8 +48,21 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        // We're binding handleRemoveAll to this
+        // because otherwise the method would loose
+        // the this-context.
+        // We alternatively could bind the method in the
+        // onClick implementation, but binding only once
+        // in the constructor is more efficient.
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+
     handleRemoveAll() {
-        alert("Handle remove All");
+        console.log(this.props.options);
     }
 
     render() {
