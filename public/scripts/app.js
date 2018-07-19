@@ -100,112 +100,6 @@ var IndecisionApp = function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
-var Header = function (_React$Component2) {
-  _inherits(Header, _React$Component2);
-
-  function Header() {
-    _classCallCheck(this, Header);
-
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-  }
-
-  _createClass(Header, [{
-    key: "render",
-
-    /**
-     * render() must be defined by every React Component.
-     */
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "h1",
-          null,
-          this.props.title
-        ),
-        React.createElement(
-          "h2",
-          null,
-          this.props.subTitle
-        )
-      );
-    }
-  }]);
-
-  return Header;
-}(React.Component);
-
-var Action = function (_React$Component3) {
-  _inherits(Action, _React$Component3);
-
-  function Action() {
-    _classCallCheck(this, Action);
-
-    return _possibleConstructorReturn(this, (Action.__proto__ || Object.getPrototypeOf(Action)).apply(this, arguments));
-  }
-
-  _createClass(Action, [{
-    key: "render",
-    value: function render() {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "button",
-          {
-            onClick: this.props.handlePick,
-            disabled: !this.props.hasOptions,
-            "class": "myButtonWhite"
-          },
-          "What should I do?"
-        )
-      );
-    }
-  }]);
-
-  return Action;
-}(React.Component);
-
-var Options = function (_React$Component4) {
-  _inherits(Options, _React$Component4);
-
-  function Options() {
-    _classCallCheck(this, Options);
-
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
-  }
-
-  _createClass(Options, [{
-    key: "render",
-    value: function render() {
-      var numOptions = this.props.options.length;
-
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "button",
-          { "class": "myButtonRed", onClick: this.props.handleDeleteOptions },
-          "Remove All"
-        ),
-        React.createElement(
-          "p",
-          null,
-          "You have got ",
-          numOptions,
-          " options:"
-        ),
-        this.props.options.map(function (option) {
-          return React.createElement(Option, { key: option, optionText: option });
-        })
-      );
-    }
-  }]);
-
-  return Options;
-}(React.Component);
-
 /**
  * This is a stateless function component.
  *
@@ -215,13 +109,70 @@ var Options = function (_React$Component4) {
  * - u can still pass props
  * - has no 'this'-access (being an arrow-function)
  * - Can be used with <Option> - i.e. const name is the JSX element name
- * 
+ *
  * Pros:
  * - faster than class-based components (no overhead)
  * - easier to read and write
  * - much easier to test (still to be checked)
  */
 
+
+var Header = function Header(props) {
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "h1",
+      null,
+      props.title
+    ),
+    React.createElement(
+      "h2",
+      null,
+      props.subTitle
+    )
+  );
+};
+
+var Action = function Action(props) {
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "button",
+      {
+        onClick: props.handlePick,
+        disabled: !props.hasOptions,
+        "class": "myButtonWhite"
+      },
+      "What should I do?"
+    )
+  );
+};
+
+var Options = function Options(props) {
+  var numOptions = props.options.length;
+
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "button",
+      { "class": "myButtonRed", onClick: props.handleDeleteOptions },
+      "Remove All"
+    ),
+    React.createElement(
+      "p",
+      null,
+      "You have got ",
+      numOptions,
+      " options:"
+    ),
+    props.options.map(function (option) {
+      return React.createElement(Option, { key: option, optionText: option });
+    })
+  );
+};
 
 var Option = function Option(props) {
   return React.createElement(
@@ -236,20 +187,20 @@ var Option = function Option(props) {
   );
 };
 
-var AddOption = function (_React$Component5) {
-  _inherits(AddOption, _React$Component5);
+var AddOption = function (_React$Component2) {
+  _inherits(AddOption, _React$Component2);
 
   function AddOption(props) {
     _classCallCheck(this, AddOption);
 
-    var _this5 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+    var _this2 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
-    _this5.state = {
+    _this2.state = {
       errMsg: undefined
     };
 
-    _this5.handleAddOpt = _this5.handleAddOpt.bind(_this5);
-    return _this5;
+    _this2.handleAddOpt = _this2.handleAddOpt.bind(_this2);
+    return _this2;
   }
 
   _createClass(AddOption, [{

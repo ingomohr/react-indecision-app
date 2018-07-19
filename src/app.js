@@ -70,54 +70,6 @@ class IndecisionApp extends React.Component {
   }
 }
 
-class Header extends React.Component {
-  /**
-   * render() must be defined by every React Component.
-   */
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subTitle}</h2>
-      </div>
-    );
-  }
-}
-
-class Action extends React.Component {
-  render() {
-    return (
-      <div>
-        <button
-          onClick={this.props.handlePick}
-          disabled={!this.props.hasOptions}
-          class="myButtonWhite"
-        >
-          What should I do?
-        </button>
-      </div>
-    );
-  }
-}
-
-class Options extends React.Component {
-  render() {
-    const numOptions = this.props.options.length;
-
-    return (
-      <div>
-        <button class="myButtonRed" onClick={this.props.handleDeleteOptions}>
-          Remove All
-        </button>
-        <p>You have got {numOptions} options:</p>
-        {this.props.options.map(option => (
-          <Option key={option} optionText={option} />
-        ))}
-      </div>
-    );
-  }
-}
-
 /**
  * This is a stateless function component.
  *
@@ -127,12 +79,49 @@ class Options extends React.Component {
  * - u can still pass props
  * - has no 'this'-access (being an arrow-function)
  * - Can be used with <Option> - i.e. const name is the JSX element name
- * 
+ *
  * Pros:
  * - faster than class-based components (no overhead)
  * - easier to read and write
  * - much easier to test (still to be checked)
  */
+const Header = props => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <h2>{props.subTitle}</h2>
+    </div>
+  );
+};
+
+const Action = props => {
+  return (
+    <div>
+      <button
+        onClick={props.handlePick}
+        disabled={!props.hasOptions}
+        class="myButtonWhite"
+      >
+        What should I do?
+      </button>
+    </div>
+  );
+};
+
+const Options = props => {
+  const numOptions = props.options.length;
+
+  return (
+    <div>
+      <button class="myButtonRed" onClick={props.handleDeleteOptions}>
+        Remove All
+      </button>
+      <p>You have got {numOptions} options:</p>
+      {props.options.map(option => <Option key={option} optionText={option} />)}
+    </div>
+  );
+};
+
 const Option = props => {
   return (
     <div>
