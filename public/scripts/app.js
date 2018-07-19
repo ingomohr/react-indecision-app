@@ -215,6 +215,11 @@ var Options = function (_React$Component4) {
  * - u can still pass props
  * - has no 'this'-access (being an arrow-function)
  * - Can be used with <Option> - i.e. const name is the JSX element name
+ * 
+ * Pros:
+ * - faster than class-based components (no overhead)
+ * - easier to read and write
+ * - much easier to test (still to be checked)
  */
 
 
