@@ -206,50 +206,45 @@ var Options = function (_React$Component4) {
   return Options;
 }(React.Component);
 
-var Option = function (_React$Component5) {
-  _inherits(Option, _React$Component5);
+/**
+ * This is a stateless function component.
+ *
+ * i.e.
+ * - no state
+ * - just a function
+ * - u can still pass props
+ * - has no 'this'-access (being an arrow-function)
+ * - Can be used with <Option> - i.e. const name is the JSX element name
+ */
 
-  function Option() {
-    _classCallCheck(this, Option);
 
-    return _possibleConstructorReturn(this, (Option.__proto__ || Object.getPrototypeOf(Option)).apply(this, arguments));
-  }
+var Option = function Option(props) {
+  return React.createElement(
+    "div",
+    null,
+    React.createElement(
+      "p",
+      { key: props.optionText },
+      "Option: ",
+      props.optionText
+    )
+  );
+};
 
-  _createClass(Option, [{
-    key: "render",
-    value: function render() {
-      var option = this.props.optionText;
-
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "p",
-          { key: option },
-          "Option: ",
-          option
-        )
-      );
-    }
-  }]);
-
-  return Option;
-}(React.Component);
-
-var AddOption = function (_React$Component6) {
-  _inherits(AddOption, _React$Component6);
+var AddOption = function (_React$Component5) {
+  _inherits(AddOption, _React$Component5);
 
   function AddOption(props) {
     _classCallCheck(this, AddOption);
 
-    var _this6 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
-    _this6.state = {
+    _this5.state = {
       errMsg: undefined
     };
 
-    _this6.handleAddOpt = _this6.handleAddOpt.bind(_this6);
-    return _this6;
+    _this5.handleAddOpt = _this5.handleAddOpt.bind(_this5);
+    return _this5;
   }
 
   _createClass(AddOption, [{

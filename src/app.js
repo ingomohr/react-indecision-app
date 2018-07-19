@@ -118,17 +118,23 @@ class Options extends React.Component {
   }
 }
 
-class Option extends React.Component {
-  render() {
-    const option = this.props.optionText;
-
-    return (
-      <div>
-        <p key={option}>Option: {option}</p>
-      </div>
-    );
-  }
-}
+/**
+ * This is a stateless function component.
+ *
+ * i.e.
+ * - no state
+ * - just a function
+ * - u can still pass props
+ * - has no 'this'-access (being an arrow-function)
+ * - Can be used with <Option> - i.e. const name is the JSX element name
+ */
+const Option = props => {
+  return (
+    <div>
+      <p key={props.optionText}>Option: {props.optionText}</p>
+    </div>
+  );
+};
 
 class AddOption extends React.Component {
   constructor(props) {
