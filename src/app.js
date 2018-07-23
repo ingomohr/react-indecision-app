@@ -183,8 +183,4 @@ class AddOption extends React.Component {
   }
 }
 
-const initialOptions = ["One", "Two", "Four"];
-ReactDOM.render(
-  <IndecisionApp options={initialOptions} />,
-  document.getElementById("app")
-);
+ReactDOM.render(<IndecisionApp />, document.getElementById("app"));

@@ -261,5 +261,4 @@ var AddOption = function (_React$Component2) {
   return AddOption;
 }(React.Component);
 
-var initialOptions = ["One", "Two", "Four"];
-ReactDOM.render(React.createElement(IndecisionApp, { options: initialOptions }), document.getElementById("app"));
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById("app"));
