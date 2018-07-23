@@ -19,7 +19,7 @@ var IndecisionApp = function (_React$Component) {
     _this.state = {
       title: "Indecision App",
       subTitle: "Let your app decide",
-      options: []
+      options: props.options
     };
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
@@ -83,7 +83,7 @@ var IndecisionApp = function (_React$Component) {
       return React.createElement(
         "div",
         null,
-        React.createElement(Header, { title: this.state.title, subTitle: this.state.subTitle }),
+        React.createElement(Header, { subTitle: this.state.subTitle }),
         React.createElement(Action, {
           hasOptions: this.state.options.length > 0,
           handlePick: this.handlePick
@@ -101,6 +101,15 @@ var IndecisionApp = function (_React$Component) {
 }(React.Component);
 
 /**
+ * Default props for IndecisionApp component.
+ */
+
+
+IndecisionApp.defaultProps = {
+  options: []
+};
+
+/**
  * This is a stateless function component.
  *
  * i.e.
@@ -115,8 +124,6 @@ var IndecisionApp = function (_React$Component) {
  * - easier to read and write
  * - much easier to test (still to be checked)
  */
-
-
 var Header = function Header(props) {
   return React.createElement(
     "div",
@@ -126,12 +133,16 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subTitle && React.createElement(
       "h2",
       null,
       props.subTitle
     )
   );
+};
+
+Header.defaultProps = {
+  title: "Indecision"
 };
 
 var Action = function Action(props) {
@@ -250,4 +261,5 @@ var AddOption = function (_React$Component2) {
   return AddOption;
 }(React.Component);
 
-ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById("app"));
+var initialOptions = ["One", "Two", "Four"];
+ReactDOM.render(React.createElement(IndecisionApp, { options: initialOptions }), document.getElementById("app"));
