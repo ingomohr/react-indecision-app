@@ -19,11 +19,7 @@ class IndecisionApp extends React.Component {
    * only be passed from parent components to child components.
    */
   handleDeleteOptions() {
-    this.setState(() => {
-      return {
-        options: []
-      };
-    });
+    this.setState(() => ({ options: [] }));
   }
 
   /**
@@ -44,11 +40,9 @@ class IndecisionApp extends React.Component {
     } else if (this.state.options.indexOf(newOption) != -1) {
       return "Duplicate option: <" + newOption + ">";
     } else {
-      this.setState(prevState => {
-        return {
-          options: prevState.options.concat(newOption)
-        };
-      });
+      this.setState(prevState => ({
+        options: prevState.options.concat(newOption)
+      }));
     }
   }
 
@@ -161,11 +155,7 @@ class AddOption extends React.Component {
     console.log("New option: " + newOption);
     console.log("Err: " + newErrMsg);
 
-    this.setState(() => {
-      return {
-        errMsg: newErrMsg
-      };
-    });
+    this.setState(() => ({ errMsg: newErrMsg }));
 
     e.target.elements.option.value = "";
   }
