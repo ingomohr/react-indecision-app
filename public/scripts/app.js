@@ -23,6 +23,7 @@ var IndecisionApp = function (_React$Component) {
     };
 
     _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+    _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
     return _this;
@@ -41,6 +42,19 @@ var IndecisionApp = function (_React$Component) {
     value: function handleDeleteOptions() {
       this.setState(function () {
         return { options: [] };
+      });
+    }
+  }, {
+    key: "handleDeleteOption",
+    value: function handleDeleteOption(option) {
+      console.log("Deleting option: " + option);
+
+      this.setState(function (prevState) {
+        return {
+          options: prevState.options.filter(function (opt) {
+            return opt !== option;
+          })
+        };
       });
     }
 
@@ -88,7 +102,8 @@ var IndecisionApp = function (_React$Component) {
         }),
         React.createElement(Options, {
           options: this.state.options,
-          handleDeleteOptions: this.handleDeleteOptions
+          handleDeleteOptions: this.handleDeleteOptions,
+          handleDeleteOption: this.handleDeleteOption
         }),
         React.createElement(AddOption, { handleAddOption: this.handleAddOption })
       );
@@ -149,11 +164,7 @@ var Action = function Action(props) {
     null,
     React.createElement(
       "button",
-      {
-        onClick: props.handlePick,
-        disabled: !props.hasOptions,
-        "class": "myButtonWhite"
-      },
+      { onClick: props.handlePick, disabled: !props.hasOptions },
       "What should I do?"
     )
   );
@@ -167,7 +178,7 @@ var Options = function Options(props) {
     null,
     React.createElement(
       "button",
-      { "class": "myButtonRed", onClick: props.handleDeleteOptions },
+      { onClick: props.handleDeleteOptions },
       "Remove All"
     ),
     React.createElement(
@@ -178,7 +189,11 @@ var Options = function Options(props) {
       " options:"
     ),
     props.options.map(function (option) {
-      return React.createElement(Option, { key: option, optionText: option });
+      return React.createElement(Option, {
+        key: option,
+        optionText: option,
+        onDeleteOption: props.handleDeleteOption
+      });
     })
   );
 };
@@ -186,12 +201,15 @@ var Options = function Options(props) {
 var Option = function Option(props) {
   return React.createElement(
     "div",
-    null,
+    { key: props.optionText },
+    "Option: ",
+    props.optionText,
     React.createElement(
-      "p",
-      { key: props.optionText },
-      "Option: ",
-      props.optionText
+      "button",
+      { onClick: function onClick(e) {
+          return props.onDeleteOption(props.optionText);
+        } },
+      "Remove"
     )
   );
 };
@@ -246,7 +264,7 @@ var AddOption = function (_React$Component2) {
           React.createElement("input", { type: "text", name: "option" }),
           React.createElement(
             "button",
-            { "class": "myButton" },
+            null,
             "Add Option"
           )
         )
