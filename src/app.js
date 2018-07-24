@@ -14,6 +14,44 @@ class IndecisionApp extends React.Component {
   }
 
   /**
+   * Component lifecycle method.
+   * Called when component is mounted onto the DOM.
+   * Can be used to load data from database into component.
+   */
+  componentDidMount() {
+    // Can be tested using this on the Console in the dev tools of Chrome:
+    // ReactDOM.render(React.createElement("p"), document.getElementById("app"));
+    // => replaces the component w/ p
+
+    console.log("Component did mount!");
+  }
+
+  /**
+   * Component lifecycle method.
+   * Called shortly before component will go away.
+   */
+  componentWillUnmount() {
+    console.log("Component will unmount.");
+  }
+
+  /**
+   * Component lifecycle method.
+   * Called when component's props or state did change.
+   */
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Component did update!");
+    console.log(
+      "Had " +
+        prevState.options.size +
+        "before. Now: " +
+        this.state.options.size
+    );
+  }
+
+  // There are more component lifecycle methods. See web for more.
+  // => see facebook.github.io/react
+
+  /**
    * This method is for allowing child components to push
    * data upstream.
    * ... which cannot be done using props, because props can
@@ -142,7 +180,7 @@ const Options = props => {
 const Option = props => {
   return (
     <div key={props.optionText}>
-      Option: {props.optionText}
+      {props.optionText}
       <button onClick={e => props.onDeleteOption(props.optionText)}>
         Remove
       </button>

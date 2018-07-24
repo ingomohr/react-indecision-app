@@ -30,14 +30,56 @@ var IndecisionApp = function (_React$Component) {
   }
 
   /**
-   * This method is for allowing child components to push
-   * data upstream.
-   * ... which cannot be done using props, because props can
-   * only be passed from parent components to child components.
+   * Component lifecycle method.
+   * Called when component is mounted onto the DOM.
+   * Can be used to load data from database into component.
    */
 
 
   _createClass(IndecisionApp, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      // Can be tested using this on the Console in the dev tools of Chrome:
+      // ReactDOM.render(React.createElement("p"), document.getElementById("app"));
+      // => replaces the component w/ p
+
+      console.log("Component did mount!");
+    }
+
+    /**
+     * Component lifecycle method.
+     * Called shortly before component will go away.
+     */
+
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      console.log("Component will unmount.");
+    }
+
+    /**
+     * Component lifecycle method.
+     * Called when component's props or state did change.
+     */
+
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      console.log("Component did update!");
+      console.log("Had " + prevState.options.size + "before. Now: " + this.state.options.size);
+    }
+
+    // There are more component lifecycle methods. See web for more.
+    // => see facebook.github.io/react
+
+    /**
+     * This method is for allowing child components to push
+     * data upstream.
+     * ... which cannot be done using props, because props can
+     * only be passed from parent components to child components.
+     */
+
+  }, {
     key: "handleDeleteOptions",
     value: function handleDeleteOptions() {
       this.setState(function () {
@@ -202,7 +244,6 @@ var Option = function Option(props) {
   return React.createElement(
     "div",
     { key: props.optionText },
-    "Option: ",
     props.optionText,
     React.createElement(
       "button",
