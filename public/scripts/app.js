@@ -39,11 +39,12 @@ var IndecisionApp = function (_React$Component) {
   _createClass(IndecisionApp, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // Can be tested using this on the Console in the dev tools of Chrome:
-      // ReactDOM.render(React.createElement("p"), document.getElementById("app"));
-      // => replaces the component w/ p
+      var jsonData = localStorage.getItem("options");
+      var parsedOptions = JSON.parse(jsonData);
 
-      console.log("Component did mount!");
+      this.setState(function () {
+        return { options: parsedOptions.options };
+      });
     }
 
     /**
@@ -65,8 +66,13 @@ var IndecisionApp = function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      console.log("Component did update!");
-      console.log("Had " + prevState.options.size + "before. Now: " + this.state.options.size);
+      var hasChanged = prevState.options.length != this.state.options.length;
+      if (hasChanged) {
+        var jsonData = JSON.stringify({ options: this.state.options });
+        console.log("Saving data: " + jsonData);
+
+        localStorage.setItem("options", jsonData);
+      }
     }
 
     // There are more component lifecycle methods. See web for more.

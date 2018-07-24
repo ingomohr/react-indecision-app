@@ -19,11 +19,10 @@ class IndecisionApp extends React.Component {
    * Can be used to load data from database into component.
    */
   componentDidMount() {
-    // Can be tested using this on the Console in the dev tools of Chrome:
-    // ReactDOM.render(React.createElement("p"), document.getElementById("app"));
-    // => replaces the component w/ p
+    const jsonData = localStorage.getItem("options");
+    const parsedOptions = JSON.parse(jsonData);
 
-    console.log("Component did mount!");
+    this.setState(() => ({ options: parsedOptions.options }));
   }
 
   /**
@@ -39,13 +38,13 @@ class IndecisionApp extends React.Component {
    * Called when component's props or state did change.
    */
   componentDidUpdate(prevProps, prevState) {
-    console.log("Component did update!");
-    console.log(
-      "Had " +
-        prevState.options.size +
-        "before. Now: " +
-        this.state.options.size
-    );
+    const hasChanged = prevState.options.length != this.state.options.length;
+    if (hasChanged) {
+      const jsonData = JSON.stringify({ options: this.state.options });
+      console.log("Saving data: " + jsonData);
+
+      localStorage.setItem("options", jsonData);
+    }
   }
 
   // There are more component lifecycle methods. See web for more.
