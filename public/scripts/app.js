@@ -235,6 +235,11 @@ var Options = function Options(props) {
       { onClick: props.handleDeleteOptions },
       "Remove All"
     ),
+    props.options.length === 0 && React.createElement(
+      "p",
+      null,
+      "Please enter an option to get started."
+    ),
     React.createElement(
       "p",
       null,
@@ -298,7 +303,9 @@ var AddOption = function (_React$Component2) {
         return { errMsg: newErrMsg };
       });
 
-      e.target.elements.option.value = "";
+      if (!newErrMsg) {
+        e.target.elements.option.value = "";
+      }
     }
   }, {
     key: "render",
