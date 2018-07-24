@@ -40,11 +40,17 @@ var IndecisionApp = function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var jsonData = localStorage.getItem("options");
-      var parsedOptions = JSON.parse(jsonData);
 
-      this.setState(function () {
-        return { options: parsedOptions.options };
-      });
+      if (jsonData) {
+        try {
+          var parsedOptions = JSON.parse(jsonData);
+          this.setState(function () {
+            return { options: parsedOptions.options };
+          });
+        } catch (e) {
+          console.log("Bad data. Not gonna parse that thang.");
+        }
+      }
     }
 
     /**
