@@ -4,4 +4,4 @@
  */
 import { square, add } from "./utils.js";
 console.log(square(4));
-console.log(add(2, 1));
+console.log(add(3, 1));

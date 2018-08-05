@@ -1,5 +1,3 @@
-const square = x => x * x;
+export const square = x => x * x;
 
-const add = (x, y) => x + y;
-
-export { square, add };
+export const add = (x, y) => x + y;
