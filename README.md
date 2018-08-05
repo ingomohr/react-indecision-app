@@ -3,18 +3,18 @@ udemy course impl
 
 See https://www.udemy.com/react-2nd-edition/
 
-#### Hint:
-Init compiler: Start in terminal:
+#### Build:
+Start in terminal:
 
 ```
-babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+yarn run build
 ```
 
-This will automatically update your running app live in the browser when you edit your js file in the src folder.
+This will run webpack to build the app and create a ```bundle.js``` which is to be served.
 
 #### Start live-server on served public folder:
 ```
-live-server public
+yarn run serve
 ```
 #### Regenerating node_modules folder
 * Delete the folder
