@@ -11,4 +11,4 @@ console.log(add(3, 1));
  * Because subtract is exported as default, we can just import it
  * with a different dedicated name.
  */
-console.log(myOwnSubtract(10, 8));
+console.log(myOwnSubtract(11, 8));

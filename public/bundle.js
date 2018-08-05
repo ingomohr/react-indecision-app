@@ -83,7 +83,7 @@ console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](3, 1));
  * Because subtract is exported as default, we can just import it
  * with a different dedicated name.
  */
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](10, 8));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](11, 8));
 
 
 /***/ }),
@@ -91,15 +91,14 @@ console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](10, 8));
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 const square = x => x * x;
+/* harmony export (immutable) */ __webpack_exports__["c"] = square;
+
 const add = (x, y) => x + y;
+/* harmony export (immutable) */ __webpack_exports__["a"] = add;
 
-const subtract = (x, y) => x - y;
 
-
+/* harmony default export */ __webpack_exports__["b"] = ((x, y) => x - y);
 
 
 /***/ })
