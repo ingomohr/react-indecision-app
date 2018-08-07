@@ -8,7 +8,7 @@ export default class IndecisionApp extends React.Component {
   state = {
     title: "Indecision App",
     subTitle: "Let your app decide",
-    options: this.props.options
+    options: []
   };
 
   /**
