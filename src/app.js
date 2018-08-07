@@ -1,5 +1,10 @@
-// install validator via "yarn add validator"
+// install react and react-dom via
+// -> yarn add react
+// -> yarn add react-dom
 
-import validator from "validator";
+import React from "react";
+import ReactDOM from "react-dom";
 
-console.log(validator.isEmail("hubba@sample.com"));
+const template = React.createElement("p", {}, "testing");
+
+ReactDOM.render(template, document.getElementById("app"));
