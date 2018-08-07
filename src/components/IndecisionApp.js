@@ -5,26 +5,18 @@ import Action from "./Action";
 import Header from "./Header";
 
 export default class IndecisionApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "Indecision App",
-      subTitle: "Let your app decide",
-      options: props.options
-    };
-
-    this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-    this.handleDeleteOption = this.handleDeleteOption.bind(this);
-    this.handlePick = this.handlePick.bind(this);
-    this.handleAddOption = this.handleAddOption.bind(this);
-  }
+  state = {
+    title: "Indecision App",
+    subTitle: "Let your app decide",
+    options: this.props.options
+  };
 
   /**
    * Component lifecycle method.
    * Called when component is mounted onto the DOM.
    * Can be used to load data from database into component.
    */
-  componentDidMount() {
+  componentDidMount = () => {
     const jsonData = localStorage.getItem("options");
 
     if (jsonData) {
@@ -35,21 +27,21 @@ export default class IndecisionApp extends React.Component {
         console.log("Bad data. Not gonna parse that thang.");
       }
     }
-  }
+  };
 
   /**
    * Component lifecycle method.
    * Called shortly before component will go away.
    */
-  componentWillUnmount() {
+  componentWillUnmount = () => {
     console.log("Component will unmount.");
-  }
+  };
 
   /**
    * Component lifecycle method.
    * Called when component's props or state did change.
    */
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     const hasChanged = prevState.options.length != this.state.options.length;
     if (hasChanged) {
       const jsonData = JSON.stringify({ options: this.state.options });
@@ -57,7 +49,7 @@ export default class IndecisionApp extends React.Component {
 
       localStorage.setItem("options", jsonData);
     }
-  }
+  };
 
   // There are more component lifecycle methods. See web for more.
   // => see facebook.github.io/react
@@ -68,11 +60,11 @@ export default class IndecisionApp extends React.Component {
    * ... which cannot be done using props, because props can
    * only be passed from parent components to child components.
    */
-  handleDeleteOptions() {
+  handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
-  }
+  };
 
-  handleDeleteOption(option) {
+  handleDeleteOption = option => {
     console.log("Deleting option: " + option);
 
     this.setState(prevState => {
@@ -80,21 +72,21 @@ export default class IndecisionApp extends React.Component {
         options: prevState.options.filter(opt => opt !== option)
       };
     });
-  }
+  };
 
   /**
    * For pushing data upstream, too.
    */
-  handlePick() {
+  handlePick = () => {
     const optsLength = this.state.options.length;
     const randIndex = Math.floor(Math.random() * optsLength);
     alert("Go with option: " + this.state.options[randIndex]);
-  }
+  };
 
   /**
    * For pushing data upstream, too.
    */
-  handleAddOption(newOption) {
+  handleAddOption = newOption => {
     if (!newOption) {
       return "Enter a valid option.";
     } else if (this.state.options.indexOf(newOption) != -1) {
@@ -104,7 +96,7 @@ export default class IndecisionApp extends React.Component {
         options: prevState.options.concat(newOption)
       }));
     }
-  }
+  };
 
   render() {
     return (
