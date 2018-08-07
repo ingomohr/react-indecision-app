@@ -25,5 +25,9 @@ module.exports = {
   },
   // Maps stacktraces in the dev console (browser) to the source code
   // instead of the line in the bundle.js
-  devtool: "cheap-module-eval-source-map"
+  devtool: "cheap-module-eval-source-map",
+  devServer: {
+    // Configures where webpack-dev-server finds the
+    contentBase: path.join(__dirname, "public")
+  }
 };
